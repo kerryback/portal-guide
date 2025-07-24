@@ -58,7 +58,7 @@ portal-guide/
 - **Live Documentation**: [Portal Guide Site](https://kerryback.github.io/portal-guide/)
 - **Data Portal**: [data-portal.rice-business.org](https://data-portal.rice-business.org)
 - **Main Repository**: [github.com/kerryback/data_app](https://github.com/kerryback/data_app)
-- **MCP Server**: [github.com/kerryback/mcp_server](https://github.com/kerryback/mcp_server)
+- **MCP Server**: [github.com/kerrybackapps/mcp_server](https://github.com/kerrybackapps/mcp_server)
 
 ## License
 
