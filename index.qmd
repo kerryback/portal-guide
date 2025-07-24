@@ -1,0 +1,48 @@
+---
+title: "Rice Business Data Portal Guide"
+---
+
+# Welcome to the Rice Business Data Portal
+
+This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.
+
+## Quick Links
+
+- [**User Guide**](portal-user-guide.html) - Complete documentation for using the data portal
+- [Data Portal](https://data-portal.rice-business.org) - Access the live application
+- [GitHub Repository](https://github.com/kerryback/data_app) - Source code and technical details
+
+## About the Portal
+
+The Rice Business Data Portal provides access to:
+
+- **15,000+ Stock Tickers** with comprehensive company information
+- **Daily Market Data** including prices, volumes, and technical indicators  
+- **Fundamental Data** from SEC filings (quarterly and annual)
+- **Advanced Analytics** including financial ratios and growth calculations
+- **Python API** for programmatic data access
+- **MCP Integration** for AI-powered analysis through Claude
+
+## Getting Started
+
+1. **Access**: Visit [data-portal.rice-business.org](https://data-portal.rice-business.org)
+2. **Authentication**: Enter your Rice University email address (@rice.edu)
+3. **Confirmation**: Check your email and click the confirmation link
+4. **Token**: Copy your access token for API usage
+
+## Documentation
+
+- [**Complete User Guide**](portal-user-guide.html) - Detailed documentation with examples
+- [**Python Examples**](https://colab.research.google.com/github/kerryback/data-portal-notebook/blob/main/Rice_Business_Data_Example.ipynb) - Google Colab notebook
+- [**API Reference**](https://data-portal.rice-business.org/tables) - Table schemas and field descriptions
+
+## Support
+
+For questions or support:
+- **Email**: kerry.e.back@rice.edu
+- **GitHub Issues**: Report bugs or request features
+- **Office Hours**: Contact for consultation on research projects
+
+---
+
+*Developed by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School.*
