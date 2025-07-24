@@ -23,8 +23,9 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      light: [flatly, styles.css]
+      dark: [superhero, styles.css]
     toc: true
     toc-depth: 3
     number-sections: true
