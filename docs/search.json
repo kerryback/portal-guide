@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.\n\n\n\nUser Guide - Complete documentation for using the data portal\nData Portal - Access the live application\nGitHub Repository - Source code and technical details\n\n\n\n\nThe Rice Business Data Portal provides access to:\n\n15,000+ Stock Tickers with comprehensive company information\nDaily Market Data including prices, volumes, and technical indicators\n\nFundamental Data from SEC filings (quarterly and annual)\nAdvanced Analytics including financial ratios and growth calculations\nPython API for programmatic data access\nMCP Integration for AI-powered analysis through Claude\n\n\n\n\n\nAccess: Visit data-portal.rice-business.org\nAuthentication: Enter your Rice University email address (@rice.edu)\nConfirmation: Check your email and click the confirmation link\nToken: Copy your access token for API usage\n\n\n\n\n\nComplete User Guide - Detailed documentation with examples\nPython Examples - Google Colab notebook\nAPI Reference - Table schemas and field descriptions\n\n\n\n\nFor questions or support: - Email: kerry.e.back@rice.edu - GitHub Issues: Report bugs or request features - Office Hours: Contact for consultation on research projects\n\nDeveloped by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School."
+  },
+  {
+    "objectID": "index.html#quick-links",
+    "href": "index.html#quick-links",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "User Guide - Complete documentation for using the data portal\nData Portal - Access the live application\nGitHub Repository - Source code and technical details"
+  },
+  {
+    "objectID": "index.html#about-the-portal",
+    "href": "index.html#about-the-portal",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "The Rice Business Data Portal provides access to:\n\n15,000+ Stock Tickers with comprehensive company information\nDaily Market Data including prices, volumes, and technical indicators\n\nFundamental Data from SEC filings (quarterly and annual)\nAdvanced Analytics including financial ratios and growth calculations\nPython API for programmatic data access\nMCP Integration for AI-powered analysis through Claude"
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "Access: Visit data-portal.rice-business.org\nAuthentication: Enter your Rice University email address (@rice.edu)\nConfirmation: Check your email and click the confirmation link\nToken: Copy your access token for API usage"
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "Complete User Guide - Detailed documentation with examples\nPython Examples - Google Colab notebook\nAPI Reference - Table schemas and field descriptions"
+  },
+  {
+    "objectID": "index.html#support",
+    "href": "index.html#support",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "For questions or support: - Email: kerry.e.back@rice.edu - GitHub Issues: Report bugs or request features - Office Hours: Contact for consultation on research projects\n\nDeveloped by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School."
+  },
+  {
+    "objectID": "portal-user-guide.html",
+    "href": "portal-user-guide.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\n\n\n1 User Guide for Rice Business Stock Market Data Portal\nQueries are SQL (Structured Query Language) commands. To enter a command, click on the “Execute Query” button. Pressing the Enter key will not execute the query.\nSQL is not case sensitive. It is common to see SQL commands written in uppercase, and we will do so below, but lowercase is also accepted. Cases matter only when referring to variables, tables, and other database objects. Variable names must be quoted with single quotes. Table names are not quoted.\nSQL commands can be written over multiple lines. For human readability, it is common to write different components of a command on separate lines, as you will see in the following examples.\n\n1.0.0.1 Get all data from a table\nSELECT * FROM table_name\n\n\n1.0.0.2 Get specific columns from a table\nSELECT column1, column2 FROM table_name\n\n\n1.0.0.3 Get specific rows from a table\nSELECT * FROM table_name WHERE condition\n\n\n1.0.0.4 Get specific rows and columns from a table\nSELECT column1, column2 FROM table_name \nWHERE condition\n\n\n1.0.0.5 Example of conditions\nWHERE ticker = 'AAPL' and date &gt;= '2024-01-01'\n\n\n1.0.0.6 Get only the first rows from a table\nThis is useful to get an understanding of a table structure.\nSELECT * FROM table_name LIMIT 10\n\n\n1.0.0.7 Get the number of rows in a table\nSELECT COUNT(*) FROM table_name\n\n\n1.0.0.8 Join tables\nWe will often want to get an industry classification from the Tickers table to combine with variables selected from another table. This is called a join operation. Other join operations may also be useful. The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode). The “as” in the following example can be omitted.\nSELECT A.ticker, A.industry, B.date, B.close\nFROM tickers as A inner join sep as B on A.ticker = B.ticker\nWHERE B.date = (SELECT MAX(date) FROM B)\n\n\n1.0.0.9 Close and open variables in sep table\nThe sep table contains daily closing prices and adjusted closing prices (close and adjclose). It also contains the open price (open).33"
+  },
+  {
+    "objectID": "tables.html",
+    "href": "tables.html",
+    "title": "Database Tables",
+    "section": "",
+    "text": "This data is licensed by Rice Business from Nasdaq Data Link. It covers all NYSE and Nasdaq listed common stocks beginning in 2000."
+  },
+  {
+    "objectID": "tables.html#table-overview",
+    "href": "tables.html#table-overview",
+    "title": "Database Tables",
+    "section": "1 Table Overview",
+    "text": "1 Table Overview\n\nDaily: Daily values of PE ratio, enterprise value to EBITDA, etc.\nMetrics: Daily values of moving averages and other statistics\n\nSEP: Daily open, close, high, low, and volume\nSF1: 10K and 10Q data and financial ratios\nSF2: Trades of officers and other corporate insiders from Form 4\nTickers: Industry, sector, current size category, etc. of each stock"
+  },
+  {
+    "objectID": "tables.html#interactive-table-browser",
+    "href": "tables.html#interactive-table-browser",
+    "title": "Database Tables",
+    "section": "2 Interactive Table Browser",
+    "text": "2 Interactive Table Browser\nFor complete interactive table descriptions with search, filtering, and detailed variable information, please visit:\nComplete Table Descriptions\nThis page provides: - Searchable tables for all variables - Detailed descriptions and tooltips - Interactive filtering and sorting - Source organization (Entity, Metrics, Income Statement, etc.) - Rice University branding and styling\n\nThe interactive table browser maintains the full functionality of the original table descriptions page, including all variable definitions, descriptions, and the reorganized SF1 table with Entity variables displayed first."
+  }
+]

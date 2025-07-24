@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rice Business Data Portal Guide</title>
+<title>portal-user-guide – Rice Business Data Portal Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -290,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -317,86 +317,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-the-rice-business-data-portal" id="toc-welcome-to-the-rice-business-data-portal" class="nav-link active" data-scroll-target="#welcome-to-the-rice-business-data-portal"><span class="header-section-number">1</span> Welcome to the Rice Business Data Portal</a>
-  <ul class="collapse">
-  <li><a href="#quick-links" id="toc-quick-links" class="nav-link" data-scroll-target="#quick-links"><span class="header-section-number">1.1</span> Quick Links</a></li>
-  <li><a href="#about-the-portal" id="toc-about-the-portal" class="nav-link" data-scroll-target="#about-the-portal"><span class="header-section-number">1.2</span> About the Portal</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">1.3</span> Getting Started</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation"><span class="header-section-number">1.4</span> Documentation</a></li>
-  <li><a href="#support" id="toc-support" class="nav-link" data-scroll-target="#support"><span class="header-section-number">1.5</span> Support</a></li>
-  </ul></li>
+  <li><a href="#user-guide-for-rice-business-stock-market-data-portal" id="toc-user-guide-for-rice-business-stock-market-data-portal" class="nav-link active" data-scroll-target="#user-guide-for-rice-business-stock-market-data-portal"><span class="header-section-number">1</span> User Guide for Rice Business Stock Market Data Portal</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Rice Business Data Portal Guide</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"></h1></header><div class="quarto-title-block"><div class="quarto-title-tools-only"><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="welcome-to-the-rice-business-data-portal" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Welcome to the Rice Business Data Portal</h1>
-<p>This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.</p>
-<section id="quick-links" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="quick-links"><span class="header-section-number">1.1</span> Quick Links</h2>
-<ul>
-<li><a href="portal-user-guide.html"><strong>User Guide</strong></a> - Complete documentation for using the data portal</li>
-<li><a href="https://data-portal.rice-business.org">Data Portal</a> - Access the live application</li>
-<li><a href="https://github.com/kerryback/data_app">GitHub Repository</a> - Source code and technical details</li>
-</ul>
+<section id="user-guide-for-rice-business-stock-market-data-portal" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> User Guide for Rice Business Stock Market Data Portal</h1>
+<p>Queries are SQL (Structured Query Language) commands. To enter a command, click on the “Execute Query” button. Pressing the Enter key will not execute the query.</p>
+<p>SQL is not case sensitive. It is common to see SQL commands written in uppercase, and we will do so below, but lowercase is also accepted. Cases matter only when referring to variables, tables, and other database objects. Variable names must be quoted with single quotes. Table names are not quoted.</p>
+<p>SQL commands can be written over multiple lines. For human readability, it is common to write different components of a command on separate lines, as you will see in the following examples.</p>
+<section id="get-all-data-from-a-table" class="level4" data-number="1.0.0.1">
+<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="get-all-data-from-a-table"><span class="header-section-number">1.0.0.1</span> Get all data from a table</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="about-the-portal" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="about-the-portal"><span class="header-section-number">1.2</span> About the Portal</h2>
-<p>The Rice Business Data Portal provides access to:</p>
-<ul>
-<li><strong>15,000+ Stock Tickers</strong> with comprehensive company information</li>
-<li><strong>Daily Market Data</strong> including prices, volumes, and technical indicators<br>
-</li>
-<li><strong>Fundamental Data</strong> from SEC filings (quarterly and annual)</li>
-<li><strong>Advanced Analytics</strong> including financial ratios and growth calculations</li>
-<li><strong>Python API</strong> for programmatic data access</li>
-<li><strong>MCP Integration</strong> for AI-powered analysis through Claude</li>
-</ul>
+<section id="get-specific-columns-from-a-table" class="level4" data-number="1.0.0.2">
+<h4 data-number="1.0.0.2" class="anchored" data-anchor-id="get-specific-columns-from-a-table"><span class="header-section-number">1.0.0.2</span> Get specific columns from a table</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> column1, column2 <span class="kw">FROM</span> table_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="getting-started" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">1.3</span> Getting Started</h2>
-<ol type="1">
-<li><strong>Access</strong>: Visit <a href="https://data-portal.rice-business.org">data-portal.rice-business.org</a></li>
-<li><strong>Authentication</strong>: Enter your Rice University email address (<span class="citation" data-cites="rice.edu">@rice.edu</span>)</li>
-<li><strong>Confirmation</strong>: Check your email and click the confirmation link</li>
-<li><strong>Token</strong>: Copy your access token for API usage</li>
-</ol>
+<section id="get-specific-rows-from-a-table" class="level4" data-number="1.0.0.3">
+<h4 data-number="1.0.0.3" class="anchored" data-anchor-id="get-specific-rows-from-a-table"><span class="header-section-number">1.0.0.3</span> Get specific rows from a table</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name <span class="kw">WHERE</span> condition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="documentation" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="documentation"><span class="header-section-number">1.4</span> Documentation</h2>
-<ul>
-<li><a href="portal-user-guide.html"><strong>Complete User Guide</strong></a> - Detailed documentation with examples</li>
-<li><a href="https://colab.research.google.com/github/kerryback/data-portal-notebook/blob/main/Rice_Business_Data_Example.ipynb"><strong>Python Examples</strong></a> - Google Colab notebook</li>
-<li><a href="https://data-portal.rice-business.org/tables"><strong>API Reference</strong></a> - Table schemas and field descriptions</li>
-</ul>
+<section id="get-specific-rows-and-columns-from-a-table" class="level4" data-number="1.0.0.4">
+<h4 data-number="1.0.0.4" class="anchored" data-anchor-id="get-specific-rows-and-columns-from-a-table"><span class="header-section-number">1.0.0.4</span> Get specific rows and columns from a table</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> column1, column2 <span class="kw">FROM</span> table_name </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> condition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="support" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="support"><span class="header-section-number">1.5</span> Support</h2>
-<p>For questions or support: - <strong>Email</strong>: kerry.e.back@rice.edu - <strong>GitHub Issues</strong>: Report bugs or request features - <strong>Office Hours</strong>: Contact for consultation on research projects</p>
-<hr>
-<p><em>Developed by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School.</em></p>
+<section id="example-of-conditions" class="level4" data-number="1.0.0.5">
+<h4 data-number="1.0.0.5" class="anchored" data-anchor-id="example-of-conditions"><span class="header-section-number">1.0.0.5</span> Example of conditions</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> ticker <span class="op">=</span> <span class="st">'AAPL'</span> <span class="kw">and</span> <span class="dt">date</span> <span class="op">&gt;=</span> <span class="st">'2024-01-01'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-only-the-first-rows-from-a-table" class="level4" data-number="1.0.0.6">
+<h4 data-number="1.0.0.6" class="anchored" data-anchor-id="get-only-the-first-rows-from-a-table"><span class="header-section-number">1.0.0.6</span> Get only the first rows from a table</h4>
+<p>This is useful to get an understanding of a table structure.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name <span class="kw">LIMIT</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-the-number-of-rows-in-a-table" class="level4" data-number="1.0.0.7">
+<h4 data-number="1.0.0.7" class="anchored" data-anchor-id="get-the-number-of-rows-in-a-table"><span class="header-section-number">1.0.0.7</span> Get the number of rows in a table</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> table_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="join-tables" class="level4" data-number="1.0.0.8">
+<h4 data-number="1.0.0.8" class="anchored" data-anchor-id="join-tables"><span class="header-section-number">1.0.0.8</span> Join tables</h4>
+<p>We will often want to get an industry classification from the Tickers table to combine with variables selected from another table. This is called a join operation. Other join operations may also be useful. The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode). The “as” in the following example can be omitted.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> A.ticker, A.industry, B.<span class="dt">date</span>, B.<span class="kw">close</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tickers <span class="kw">as</span> A <span class="kw">inner</span> <span class="kw">join</span> sep <span class="kw">as</span> B <span class="kw">on</span> A.ticker <span class="op">=</span> B.ticker</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> B.<span class="dt">date</span> <span class="op">=</span> (<span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="dt">date</span>) <span class="kw">FROM</span> B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="close-and-open-variables-in-sep-table" class="level4" data-number="1.0.0.9">
+<h4 data-number="1.0.0.9" class="anchored" data-anchor-id="close-and-open-variables-in-sep-table"><span class="header-section-number">1.0.0.9</span> Close and open variables in sep table</h4>
+<p>The sep table contains daily closing prices and adjusted closing prices (close and adjclose). It also contains the open price (open).33</p>
 
 
 <!-- -->
@@ -868,54 +844,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Rice Business Data Portal Guide"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Welcome to the Rice Business Data Portal</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quick Links</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**User Guide**</span><span class="co">](portal-user-guide.html)</span> - Complete documentation for using the data portal</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Portal</span><span class="co">](https://data-portal.rice-business.org)</span> - Access the live application</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">GitHub Repository</span><span class="co">](https://github.com/kerryback/data_app)</span> - Source code and technical details</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## About the Portal</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>The Rice Business Data Portal provides access to:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**15,000+ Stock Tickers** with comprehensive company information</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Daily Market Data** including prices, volumes, and technical indicators  </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Fundamental Data** from SEC filings (quarterly and annual)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Advanced Analytics** including financial ratios and growth calculations</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Python API** for programmatic data access</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**MCP Integration** for AI-powered analysis through Claude</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Getting Started</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Access**: Visit <span class="co">[</span><span class="ot">data-portal.rice-business.org</span><span class="co">](https://data-portal.rice-business.org)</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Authentication**: Enter your Rice University email address (@rice.edu)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Confirmation**: Check your email and click the confirmation link</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Token**: Copy your access token for API usage</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Documentation</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**Complete User Guide**</span><span class="co">](portal-user-guide.html)</span> - Detailed documentation with examples</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**Python Examples**</span><span class="co">](https://colab.research.google.com/github/kerryback/data-portal-notebook/blob/main/Rice_Business_Data_Example.ipynb)</span> - Google Colab notebook</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**API Reference**</span><span class="co">](https://data-portal.rice-business.org/tables)</span> - Table schemas and field descriptions</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Support</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>For questions or support:</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Email**: kerry.e.back@rice.edu</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**GitHub Issues**: Report bugs or request features</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Office Hours**: Contact for consultation on research projects</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>*Developed by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School.*</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># User Guide for Rice Business Stock Market Data Portal</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Queries are SQL (Structured Query Language) commands.  To enter a command, click on the "Execute Query" button.  Pressing the Enter key will not execute the query.</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>SQL is not case sensitive.  It is common to see SQL commands written in uppercase, and we will do so below, but lowercase is also accepted.  Cases matter only when referring to variables, tables, and other database objects.  Variable names must be quoted with single quotes.  Table names are not quoted.</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>SQL commands can be written over multiple lines.  For human readability, it is common to write different components of a command on separate lines, as you will see in the following examples.</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get all data from a table</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get specific columns from a table</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> column1, column2 <span class="kw">FROM</span> table_name</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get specific rows from a table</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name <span class="kw">WHERE</span> condition</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get specific rows and columns from a table</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> column1, column2 <span class="kw">FROM</span> table_name </span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> condition</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Example of conditions</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> ticker <span class="op">=</span> <span class="st">'AAPL'</span> <span class="kw">and</span> <span class="dt">date</span> <span class="op">&gt;=</span> <span class="st">'2024-01-01'</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get only the first rows from a table</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>This is useful to get an understanding of a table structure.</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name <span class="kw">LIMIT</span> <span class="dv">10</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Get the number of rows in a table</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> table_name</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Join tables</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>We will often want to get an industry classification from the Tickers table to combine with variables selected from another table.  This is called a join operation.  Other join operations may also be useful.  The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode).  The "as" in the following example can be omitted.</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">```sql</span></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> A<span class="ch">.</span>ticker, A<span class="ch">.</span>industry, B<span class="ch">.</span><span class="dt">date</span>, B<span class="ch">.</span>close</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> tickers <span class="kw">as</span> A <span class="kw">inner</span> <span class="kw">join</span> sep <span class="kw">as</span> B <span class="kw">on</span> A<span class="ch">.</span>ticker <span class="op">=</span> B<span class="ch">.</span>ticker</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> B<span class="ch">.</span><span class="dt">date</span> <span class="op">=</span> (<span class="kw">SELECT</span> <span class="fu">MAX</span>(<span class="dt">date</span>) <span class="kw">FROM</span> B)</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Close and open variables in sep table</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>The sep table contains daily closing prices and adjusted closing prices (close and adjclose).  It also contains the open price (open).33</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

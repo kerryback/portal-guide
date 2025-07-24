@@ -1,0 +1,36 @@
+---
+title: "Database Tables"
+format: 
+  html:
+    page-layout: full
+    toc: true
+    toc-location: left
+---
+
+This data is licensed by Rice Business from [Nasdaq Data Link](https://data.nasdaq.com/databases/SFA). It covers all NYSE and Nasdaq listed common stocks beginning in 2000.
+
+## Table Overview
+
+- **Daily**: Daily values of PE ratio, enterprise value to EBITDA, etc.
+- **Metrics**: Daily values of moving averages and other statistics  
+- **SEP**: Daily open, close, high, low, and volume
+- **SF1**: 10K and 10Q data and financial ratios
+- **SF2**: Trades of officers and other corporate insiders from Form 4
+- **Tickers**: Industry, sector, current size category, etc. of each stock
+
+## Interactive Table Browser
+
+For complete interactive table descriptions with search, filtering, and detailed variable information, please visit:
+
+**[Complete Table Descriptions](tables.html)**
+
+This page provides:
+- Searchable tables for all variables
+- Detailed descriptions and tooltips
+- Interactive filtering and sorting
+- Source organization (Entity, Metrics, Income Statement, etc.)
+- Rice University branding and styling
+
+---
+
+*The interactive table browser maintains the full functionality of the original table descriptions page, including all variable definitions, descriptions, and the reorganized SF1 table with Entity variables displayed first.*
