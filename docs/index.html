@@ -98,6 +98,35 @@
         .content {
             line-height: 1.6;
         }
+
+        /* Code block with copy button styling */
+        .code-container {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #18bc9c;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .copy-btn:hover {
+            opacity: 1;
+            background: #15a085;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
         
         .content h3 {
             color: #18bc9c;
@@ -166,33 +195,57 @@
                         <p>You can enter any of these queries in the <code>Enter Query</code> box on the data portal. Substitute <code>table_name</code> with the name of the table you want to query. Substitute <code>variable1</code>, <code>variable2</code>, etc. with the names of the variables you want to query. Substitute <code>condition</code> with the condition you want to apply.</p>
 
                         <h4>Get all data from a table</h4>
-                        <pre><code>SELECT * FROM table_name</code></pre>
+                        <div class="code-container">
+                            <pre><code>SELECT * FROM table_name</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT * FROM table_name')">Copy</button>
+                        </div>
 
                         <h4>Get specific columns from a table</h4>
-                        <pre><code>SELECT variable1, variable2 FROM table_name</code></pre>
+                        <div class="code-container">
+                            <pre><code>SELECT variable1, variable2 FROM table_name</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT variable1, variable2 FROM table_name')">Copy</button>
+                        </div>
 
                         <h4>Get specific rows from a table</h4>
-                        <pre><code>SELECT * FROM table_name WHERE condition</code></pre>
+                        <div class="code-container">
+                            <pre><code>SELECT * FROM table_name WHERE condition</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT * FROM table_name WHERE condition')">Copy</button>
+                        </div>
 
                         <h4>Get specific rows and columns from a table</h4>
-                        <pre><code>SELECT column1, column2 FROM table_name 
+                        <div class="code-container">
+                            <pre><code>SELECT column1, column2 FROM table_name 
 WHERE condition</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT column1, column2 FROM table_name \nWHERE condition')">Copy</button>
+                        </div>
 
                         <h4>Example of conditions</h4>
-                        <pre><code>WHERE ticker = 'AAPL' and date >= '2024-01-01'</code></pre>
+                        <div class="code-container">
+                            <pre><code>WHERE ticker = 'AAPL' and date >= '2024-01-01'</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('WHERE ticker = \'AAPL\' and date >= \'2024-01-01\'')">Copy</button>
+                        </div>
 
                         <h4>Get only the first rows from a table</h4>
                         <p>This is useful to get an understanding of a table structure.</p>
-                        <pre><code>SELECT * FROM table_name LIMIT 10</code></pre>
+                        <div class="code-container">
+                            <pre><code>SELECT * FROM table_name LIMIT 10</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT * FROM table_name LIMIT 10')">Copy</button>
+                        </div>
 
                         <h4>Get the number of rows in a table</h4>
-                        <pre><code>SELECT COUNT(*) FROM table_name</code></pre>
+                        <div class="code-container">
+                            <pre><code>SELECT COUNT(*) FROM table_name</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT COUNT(*) FROM table_name')">Copy</button>
+                        </div>
 
                         <h4>Join tables</h4>
                         <p>We will often want to get an industry classification from the Tickers table to combine with variables selected from another table. This is called a join operation. Other join operations are also useful. The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode). The "as" in the following example can be omitted.</p>
-                        <pre><code>SELECT A.ticker, A.industry, B.date, B.close
+                        <div class="code-container">
+                            <pre><code>SELECT A.ticker, A.industry, B.date, B.close
 FROM tickers as A inner join sep as B on A.ticker = B.ticker
 WHERE B.date = (SELECT MAX(date) FROM B)</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard('SELECT A.ticker, A.industry, B.date, B.close\nFROM tickers as A inner join sep as B on A.ticker = B.ticker\nWHERE B.date = (SELECT MAX(date) FROM B)')">Copy</button>
+                        </div>
 
                         <h4>Close and open variables in sep table</h4>
                         <p>The sep table contains daily closing prices and adjusted closing prices (close and adjclose). It also contains the open price (open).</p>
@@ -202,5 +255,21 @@ WHERE B.date = (SELECT MAX(date) FROM B)</code></pre>
             </div>
         </div>
     </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Find the button that was clicked and temporarily change its text
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
 </body>
 </html>

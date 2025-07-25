@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Rice Business Data Portal Guide",
+    "title": "Rice Business Stock Market Data Portal",
     "section": "",
-    "text": "This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.\n\n\n\nUser Guide - Complete documentation for using the data portal\nData Portal - Access the live application\nGitHub Repository - Source code and technical details\n\n\n\n\nThe Rice Business Data Portal provides access to:\n\n15,000+ Stock Tickers with comprehensive company information\nDaily Market Data including prices, volumes, and technical indicators\n\nFundamental Data from SEC filings (quarterly and annual)\nAdvanced Analytics including financial ratios and growth calculations\nPython API for programmatic data access\nMCP Integration for AI-powered analysis through Claude\n\n\n\n\n\nAccess: Visit data-portal.rice-business.org\nAuthentication: Enter your Rice University email address (@rice.edu)\nConfirmation: Check your email and click the confirmation link\nToken: Copy your access token for API usage\n\n\n\n\n\nComplete User Guide - Detailed documentation with examples\nPython Examples - Google Colab notebook\nAPI Reference - Table schemas and field descriptions\n\n\n\n\nFor questions or support: - Email: kerry.e.back@rice.edu - GitHub Issues: Report bugs or request features - Office Hours: Contact for consultation on research projects\n\nDeveloped by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School."
+    "text": "McNair Center\n\n\n\nRice Business Stock Market Data Portal\n\n\n\nRice Business\n\n\n\n\n\n\nUser Guide\n\nQuick Links\n\nData Portal\nTable Descriptions\nPython API Tutorial\n\n\n\nQueries\nQueries are SQL (Structured Query Language) commands. To enter a command, click on the “Execute Query” button. Pressing the Enter key will not execute the query.\nSQL is not case sensitive. It is common to see SQL commands written in uppercase, and we will do so below, but lowercase is also accepted. Cases matter only when referring to variables, tables, and other database objects. Variable names must be quoted with single quotes. Table names are not quoted.\nSQL commands can be written over multiple lines. For human readability, it is common to write different components of a command on separate lines, as you will see in the following examples.\nYou can enter any of these queries in the Enter Query box on the data portal. Substitute table_name with the name of the table you want to query. Substitute variable1, variable2, etc. with the names of the variables you want to query. Substitute condition with the condition you want to apply.\n\nGet all data from a table\nSELECT * FROM table_name\n\n\nGet specific columns from a table\nSELECT variable1, variable2 FROM table_name\n\n\nGet specific rows from a table\nSELECT * FROM table_name WHERE condition\n\n\nGet specific rows and columns from a table\nSELECT column1, column2 FROM table_name \nWHERE condition\n\n\nExample of conditions\nWHERE ticker = 'AAPL' and date &gt;= '2024-01-01'\n\n\nGet only the first rows from a table\nThis is useful to get an understanding of a table structure.\nSELECT * FROM table_name LIMIT 10\n\n\nGet the number of rows in a table\nSELECT COUNT(*) FROM table_name\n\n\nJoin tables\nWe will often want to get an industry classification from the Tickers table to combine with variables selected from another table. This is called a join operation. Other join operations are also useful. The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode). The “as” in the following example can be omitted.\nSELECT A.ticker, A.industry, B.date, B.close\nFROM tickers as A inner join sep as B on A.ticker = B.ticker\nWHERE B.date = (SELECT MAX(date) FROM B)\n\n\nClose and open variables in sep table\nThe sep table contains daily closing prices and adjusted closing prices (close and adjclose). It also contains the open price (open).33"
   },
   {
     "objectID": "index.html#quick-links",
@@ -68,5 +68,47 @@
     "title": "Database Tables",
     "section": "2 Interactive Table Browser",
     "text": "2 Interactive Table Browser\nFor complete interactive table descriptions with search, filtering, and detailed variable information, please visit:\nComplete Table Descriptions\nThis page provides: - Searchable tables for all variables - Detailed descriptions and tooltips - Interactive filtering and sorting - Source organization (Entity, Metrics, Income Statement, etc.) - Rice University branding and styling\n\nThe interactive table browser maintains the full functionality of the original table descriptions page, including all variable definitions, descriptions, and the reorganized SF1 table with Entity variables displayed first."
+  },
+  {
+    "objectID": "index_backup.html",
+    "href": "index_backup.html",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.\n\n\n\nUser Guide - Complete documentation for using the data portal\nData Portal - Access the live application\nGitHub Repository - Source code and technical details\n\n\n\n\nThe Rice Business Data Portal provides access to:\n\n15,000+ Stock Tickers with comprehensive company information\nDaily Market Data including prices, volumes, and technical indicators\n\nFundamental Data from SEC filings (quarterly and annual)\nAdvanced Analytics including financial ratios and growth calculations\nPython API for programmatic data access\nMCP Integration for AI-powered analysis through Claude\n\n\n\n\n\nAccess: Visit data-portal.rice-business.org\nAuthentication: Enter your Rice University email address (@rice.edu)\nConfirmation: Check your email and click the confirmation link\nToken: Copy your access token for API usage\n\n\n\n\n\nComplete User Guide - Detailed documentation with examples\nPython Examples - Google Colab notebook\nAPI Reference - Table schemas and field descriptions\n\n\n\n\nFor questions or support: - Email: kerry.e.back@rice.edu - GitHub Issues: Report bugs or request features - Office Hours: Contact for consultation on research projects\n\nDeveloped by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School."
+  },
+  {
+    "objectID": "index_backup.html#quick-links",
+    "href": "index_backup.html#quick-links",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "User Guide - Complete documentation for using the data portal\nData Portal - Access the live application\nGitHub Repository - Source code and technical details"
+  },
+  {
+    "objectID": "index_backup.html#about-the-portal",
+    "href": "index_backup.html#about-the-portal",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "The Rice Business Data Portal provides access to:\n\n15,000+ Stock Tickers with comprehensive company information\nDaily Market Data including prices, volumes, and technical indicators\n\nFundamental Data from SEC filings (quarterly and annual)\nAdvanced Analytics including financial ratios and growth calculations\nPython API for programmatic data access\nMCP Integration for AI-powered analysis through Claude"
+  },
+  {
+    "objectID": "index_backup.html#getting-started",
+    "href": "index_backup.html#getting-started",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "Access: Visit data-portal.rice-business.org\nAuthentication: Enter your Rice University email address (@rice.edu)\nConfirmation: Check your email and click the confirmation link\nToken: Copy your access token for API usage"
+  },
+  {
+    "objectID": "index_backup.html#documentation",
+    "href": "index_backup.html#documentation",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "Complete User Guide - Detailed documentation with examples\nPython Examples - Google Colab notebook\nAPI Reference - Table schemas and field descriptions"
+  },
+  {
+    "objectID": "index_backup.html#support",
+    "href": "index_backup.html#support",
+    "title": "Rice Business Data Portal Guide",
+    "section": "",
+    "text": "For questions or support: - Email: kerry.e.back@rice.edu - GitHub Issues: Report bugs or request features - Office Hours: Contact for consultation on research projects\n\nDeveloped by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School."
   }
 ]

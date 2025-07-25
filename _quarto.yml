@@ -3,35 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "Rice Business Data Portal Guide"
-  description: "User guide for Rice University Business School Stock Market Data Portal"
-  navbar:
-    left:
-      - href: index.html
-        text: Home
-    right:
-      - icon: github
-        href: https://github.com/kerryback/portal-guide
-        aria-label: GitHub
-  
+  title: "Rice Stock Market Data Portal Guide"
+  description: "User Guide for Rice Business Stock Market Data Portal"
   page-footer:
-    left: "© 2025 Rice University Business School"
-    right: 
-      - icon: github
-        href: https://github.com/kerryback/portal-guide
-        aria-label: GitHub
+    left: "© Kerry Back"
+  
 
 format:
   html:
     theme: 
       light: [flatly, styles.css]
       dark: [superhero, styles.css]
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: show
-    code-tools: true
-    html-math-method: katex
-    
-execute:
-  freeze: auto
+
