@@ -1,48 +1,90 @@
 ---
-title: "Rice Business Data Portal Guide"
+format: html
 ---
 
-# Welcome to the Rice Business Data Portal
+::: {.header-section style="background: linear-gradient(135deg, #95a5a6 0%, #95a5a6 100%); color: white; padding: 2rem 0; margin-bottom: 2rem; border-radius: 0.5rem;"}
+::: {.logo-container style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 1rem; padding: 0 2%;"}
+![McNair Center](https://raw.githubusercontent.com/kerryback/portal-guide/main/docs/images/mcnair.jpg){.mcnair-logo style="border-radius: 10px; border: 2px solid white; background: white; padding: 2px; width: 20%; height: 80px; object-fit: contain;"}
 
-This guide provides comprehensive documentation for the Rice University Business School Stock Market Data Portal, a powerful platform for accessing and analyzing financial market data.
+# Rice Business Stock Market Data Portal {style="width: 45%; text-align: center; margin: 0; font-size: 1.8rem; color: white !important;"}
 
-## Quick Links
+![Rice Business](https://raw.githubusercontent.com/kerryback/portal-guide/main/docs/images/rice-business.jpg){.rice-logo style="border-radius: 10px; border: 2px solid white; background: white; padding: 2px; width: 20%; height: 80px; object-fit: contain;"}
+:::
+:::
 
-- [**User Guide**](portal-user-guide.html) - Complete documentation for using the data portal
-- [Data Portal](https://data-portal.rice-business.org) - Access the live application
-- [GitHub Repository](https://github.com/kerryback/data_app) - Source code and technical details
+# User Guide
 
-## About the Portal
+### Quick Links 
 
-The Rice Business Data Portal provides access to:
+- [Data Portal](https://data-portal.rice-business.org)
+- [Table Descriptions](tables.html)
+- [Python API Tutorial](https://colab.research.google.com/github/kerryback/data-portal-notebook/blob/main/Rice_Business_Data_Example.ipynb)
 
-- **15,000+ Stock Tickers** with comprehensive company information
-- **Daily Market Data** including prices, volumes, and technical indicators  
-- **Fundamental Data** from SEC filings (quarterly and annual)
-- **Advanced Analytics** including financial ratios and growth calculations
-- **Python API** for programmatic data access
-- **MCP Integration** for AI-powered analysis through Claude
+### Queries
 
-## Getting Started
+Queries are SQL (Structured Query Language) commands.  To enter a command, click on the "Execute Query" button.  Pressing the Enter key will not execute the query.
 
-1. **Access**: Visit [data-portal.rice-business.org](https://data-portal.rice-business.org)
-2. **Authentication**: Enter your Rice University email address (@rice.edu)
-3. **Confirmation**: Check your email and click the confirmation link
-4. **Token**: Copy your access token for API usage
+SQL is not case sensitive.  It is common to see SQL commands written in uppercase, and we will do so below, but lowercase is also accepted.  Cases matter only when referring to variables, tables, and other database objects.  Variable names must be quoted with single quotes.  Table names are not quoted.
 
-## Documentation
+SQL commands can be written over multiple lines.  For human readability, it is common to write different components of a command on separate lines, as you will see in the following examples.
 
-- [**Complete User Guide**](portal-user-guide.html) - Detailed documentation with examples
-- [**Python Examples**](https://colab.research.google.com/github/kerryback/data-portal-notebook/blob/main/Rice_Business_Data_Example.ipynb) - Google Colab notebook
-- [**API Reference**](https://data-portal.rice-business.org/tables) - Table schemas and field descriptions
+You can enter any of these queries in the `Enter Query` box on the data portal.  Substitute `table_name` with the name of the table you want to query.  Substitute `variable1`, `variable2`, etc. with the names of the variables you want to query.  Substitute `condition` with the condition you want to apply.
 
-## Support
+#### Get all data from a table
 
-For questions or support:
-- **Email**: kerry.e.back@rice.edu
-- **GitHub Issues**: Report bugs or request features
-- **Office Hours**: Contact for consultation on research projects
+```sql
+SELECT * FROM table_name
+```
 
----
+#### Get specific columns from a table
 
-*Developed by Kerry Back, J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University Business School.*
+```sql
+SELECT variable1, variable2 FROM table_name
+```
+
+#### Get specific rows from a table
+
+```sql
+SELECT * FROM table_name WHERE condition
+```
+
+#### Get specific rows and columns from a table
+
+```sql
+SELECT column1, column2 FROM table_name 
+WHERE condition
+```
+
+#### Example of conditions
+
+```sql
+WHERE ticker = 'AAPL' and date >= '2024-01-01'
+```
+
+#### Get only the first rows from a table
+
+This is useful to get an understanding of a table structure.
+
+```sql
+SELECT * FROM table_name LIMIT 10
+```
+
+#### Get the number of rows in a table
+
+```sql
+SELECT COUNT(*) FROM table_name
+```
+
+#### Join tables
+
+We will often want to get an industry classification from the Tickers table to combine with variables selected from another table.  This is called a join operation.  Other join operations are also useful.  The Tickers table contains several industry and sector classifications (industry, sector, sicindustry, sicsector, famaindustry, siccode).  The "as" in the following example can be omitted.
+
+```sql
+SELECT A.ticker, A.industry, B.date, B.close
+FROM tickers as A inner join sep as B on A.ticker = B.ticker
+WHERE B.date = (SELECT MAX(date) FROM B)
+```
+
+#### Close and open variables in sep table
+
+The sep table contains daily closing prices and adjusted closing prices (close and adjclose).  It also contains the open price (open).33
