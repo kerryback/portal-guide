@@ -146,7 +146,7 @@
             border-top: 4px solid rgba(0, 0, 0, 0.9);
         }
 
-        /* Tooltip styling for table descriptions */
+        /* Tooltip styling for table descriptions and hover lists */
         .tooltip-trigger {
             cursor: help;
             position: relative;
@@ -172,6 +172,52 @@
             opacity: 1;
         }
         
+        /* Enhanced tooltip for Actions and Events */
+        .table-hover-tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            line-height: 1.4;
+            max-width: 400px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: pre-line;
+        }
+        
+        .table-hover-tooltip.show {
+            opacity: 1;
+        }
+        
+        .table-hover-tooltip h6 {
+            margin: 0 0 8px 0;
+            color: #18bc9c;
+            font-weight: bold;
+            border-bottom: 1px solid #555;
+            padding-bottom: 4px;
+        }
+        
+        .table-hover-tooltip .item {
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+        }
+        
+        .table-hover-tooltip .item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .table-hover-tooltip .code {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
         /* Flatly green text styling */
         .flatly-green-text {
             color: #18bc9c;
@@ -188,9 +234,9 @@
                 <!-- Rice University Header -->
                 <div class="header-section">
                     <div class="logo-container">
-                        <img src="/static/images/mcnair.jpg" alt="McNair Center" class="mcnair-logo">
+                        <img src="https://raw.githubusercontent.com/kerrybackapps/data_app/main/static/images/mcnair.jpg" alt="McNair Center" class="mcnair-logo">
                         <h3>Table Descriptions</h3>
-                        <img src="/static/images/rice-business.jpg" alt="Rice Business" class="rice-logo">
+                        <img src="https://raw.githubusercontent.com/kerrybackapps/data_app/main/static/images/rice-business.jpg" alt="Rice Business" class="rice-logo">
                     </div>
                     <div class="about-button">
                         <i class="bi bi-info-circle"></i>
@@ -210,11 +256,19 @@
                             This page lists all variables in all tables in the database and their descriptions, with the exception of the Indicators table. The Indicators table is a list of definitions and is the basis for this page.
                         </div>
                         
-                        <!-- Table List -->
+                        <!-- Table List (Alphabetical Order) -->
                         <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <button class="btn table-name-btn me-2 hover-actions" onclick="showTableDescription('actions')" onmouseenter="showActionsTooltip(this)" onmouseleave="hideHoverTooltip()">Actions</button>
+                                <span>Corporate actions including mergers, splits, dividends, and ticker changes</span>
+                            </li>
                             <li class="mb-3">
                                 <button class="btn table-name-btn me-2" onclick="showTableDescription('daily')">Daily</button>
                                 <span>Daily values of PE ratio, enterprise value to EBITDA, etc. </span>
+                            </li>
+                            <li class="mb-3">
+                                <button class="btn table-name-btn me-2 hover-events" onclick="showTableDescription('events')" onmouseenter="showEventsTooltip(this)" onmouseleave="hideHoverTooltip()">Events</button>
+                                <span>SEC 8-K filings and material corporate events</span>
                             </li>
                             <li class="mb-3">
                                 <button class="btn table-name-btn me-2" onclick="showTableDescription('metrics')">Metrics</button>
@@ -235,14 +289,6 @@
                             <li class="mb-3">
                                 <button class="btn table-name-btn me-2" onclick="showTableDescription('tickers')">Tickers</button>
                                 <span>Industry, sector, current size category, etc. of each stock</span>
-                            </li>
-                            <li class="mb-3">
-                                <button class="btn table-name-btn me-2" onclick="showTableDescription('actions')">Actions</button>
-                                <span>Corporate actions including mergers, splits, dividends, and ticker changes</span>
-                            </li>
-                            <li class="mb-3">
-                                <button class="btn table-name-btn me-2" onclick="showTableDescription('events')">Events</button>
-                                <span>SEC 8-K filings and material corporate events</span>
                             </li>
                         </ul>
                         
@@ -725,6 +771,154 @@
                 hideTooltip();
             }
         });
+        
+        // Actions and Events hover tooltip data
+        const actionTypes = [
+            { code: 'acquisitionby', name: 'Acquisition By', description: 'Acquisition transaction where ticker is the acquired company.' },
+            { code: 'acquisitionof', name: 'Acquisition Of', description: 'Acquisition transaction where ticker is the acquiring company.' },
+            { code: 'adrratiosplit', name: 'ADR Ratio Split', description: 'Split applied to the ADR ratio as represented by the sharefactor indicator.' },
+            { code: 'bankruptcyliquidation', name: 'Bankruptcy and/or Liquidation', description: 'Bankruptcy/liquidation transaction details.' },
+            { code: 'delisted', name: 'Delisted', description: 'Delisting transaction details.' },
+            { code: 'dividend', name: 'Cash Dividend', description: 'Cash dividend distribution (adjusted for splits).' },
+            { code: 'initiated', name: 'Coverage Initiated', description: 'Initiation of coverage in price datasets.' },
+            { code: 'listed', name: 'Newly Listed', description: 'New listing details.' },
+            { code: 'mergerfrom', name: 'Merger From', description: 'Merger where ticker is the non-surviving company.' },
+            { code: 'mergerto', name: 'Merger To', description: 'Merger where ticker is the surviving company.' },
+            { code: 'regulatorydelisting', name: 'Regulatory Delisting', description: 'Securities delisted for exchange or regulatory reasons.' },
+            { code: 'relation', name: 'Relation', description: 'Linkage between multiple securities from same issuer.' },
+            { code: 'spinoff', name: 'Spinoff Ratio', description: 'Spinoff transaction with share ratio details.' },
+            { code: 'spinoffdividend', name: 'Spinoff Dividend', description: 'Spinoff transaction with dollar value details.' },
+            { code: 'spunofffrom', name: 'Spunoff From', description: 'Company that has been spunoff from parent.' },
+            { code: 'split', name: 'Stock Split or Stock Dividend', description: 'Stock split or stock dividend transaction.' },
+            { code: 'tickerchangefrom', name: 'Ticker Change From', description: 'Ticker change - previous ticker.' },
+            { code: 'tickerchangeto', name: 'Ticker Change To', description: 'Ticker change - new ticker.' },
+            { code: 'voluntarydelisting', name: 'Voluntary Delisting', description: 'Securities that have voluntarily delisted.' }
+        ];
+        
+        const eventCodes = [
+            { code: '11', name: 'Entry into a Material Definitive Agreement' },
+            { code: '12', name: 'Termination of a Material Definitive Agreement' },
+            { code: '13', name: 'Bankruptcy or Receivership' },
+            { code: '14', name: 'Mine Safety - Reporting of Shutdowns and Patterns of Violations' },
+            { code: '15', name: 'Receipt of an Attorney\'s Written Notice Pursuant to 17 CFR 205.3(d)' },
+            { code: '21', name: 'Completion of Acquisition or Disposition of Assets' },
+            { code: '22', name: 'Results of Operations and Financial Condition' },
+            { code: '23', name: 'Creation of a Direct Financial Obligation or Off-Balance Sheet Arrangement' },
+            { code: '24', name: 'Triggering Events That Accelerate or Increase a Direct Financial Obligation' },
+            { code: '25', name: 'Cost Associated with Exit or Disposal Activities' },
+            { code: '26', name: 'Material Impairments' },
+            { code: '31', name: 'Notice of Delisting or Failure to Satisfy Continued Listing Rule' },
+            { code: '32', name: 'Unregistered Sales of Equity Securities' },
+            { code: '33', name: 'Material Modifications to Rights of Security Holders' },
+            { code: '34', name: 'Schedule 13G Filing' },
+            { code: '35', name: 'Schedule 13D Filing' },
+            { code: '36', name: 'Notice under Rule 12b25 of inability to timely file Form 10-K or 10-Q' },
+            { code: '37', name: 'Tender Offer Statement under Section 14(d)(1) or 13(e)(1)' },
+            { code: '40', name: 'Changes in Registrant\'s Certifying Accountant' },
+            { code: '41', name: 'Changes in Registrant\'s Certifying Accountant' },
+            { code: '42', name: 'Non-Reliance on Previously Issued Financial Statements' },
+            { code: '51', name: 'Changes in Control of Registrant' },
+            { code: '52', name: 'Departure/Election of Directors; Appointment of Officers' },
+            { code: '53', name: 'Amendments to Articles of Incorporation or Bylaws' },
+            { code: '54', name: 'Temporary Suspension of Trading Under Employee Benefit Plans' },
+            { code: '55', name: 'Amendments to Code of Ethics or Waiver' },
+            { code: '56', name: 'Change in Shell Company Status' },
+            { code: '57', name: 'Submission of Matters to a Vote of Security Holders' },
+            { code: '58', name: 'Shareholder Nominations Pursuant to Exchange Act Rule 14a-11' },
+            { code: '61', name: 'ABS Informational and Computational Material' },
+            { code: '62', name: 'Change of Servicer or Trustee' },
+            { code: '63', name: 'Change in Credit Enhancement or Other External Support' },
+            { code: '64', name: 'Failure to Make a Required Distribution' },
+            { code: '65', name: 'Securities Act Updating Disclosure' },
+            { code: '71', name: 'Regulation FD Disclosure' },
+            { code: '81', name: 'Other Events' },
+            { code: '91', name: 'Financial Statements and Exhibits' }
+        ];
+        
+        let currentHoverTooltip = null;
+        
+        function showActionsTooltip(element) {
+            hideHoverTooltip();
+            
+            const tooltip = document.createElement('div');
+            tooltip.className = 'table-hover-tooltip show';
+            
+            let content = '<h6>Action Types</h6>';
+            actionTypes.forEach(action => {
+                content += `<div class="item"><span class="code">${action.code}:</span> ${action.name}<br><small>${action.description}</small></div>`;
+            });
+            
+            tooltip.innerHTML = content;
+            document.body.appendChild(tooltip);
+            
+            const rect = element.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+            
+            // Position tooltip to the right of the button
+            let top = rect.top + window.scrollY;
+            let left = rect.right + 10;
+            
+            // Adjust if tooltip goes off screen
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = rect.left - tooltipRect.width - 10;
+            }
+            if (top + tooltipRect.height > window.innerHeight + window.scrollY - 10) {
+                top = window.innerHeight + window.scrollY - tooltipRect.height - 10;
+            }
+            if (top < window.scrollY + 10) {
+                top = window.scrollY + 10;
+            }
+            
+            tooltip.style.top = top + 'px';
+            tooltip.style.left = left + 'px';
+            
+            currentHoverTooltip = tooltip;
+        }
+        
+        function showEventsTooltip(element) {
+            hideHoverTooltip();
+            
+            const tooltip = document.createElement('div');
+            tooltip.className = 'table-hover-tooltip show';
+            
+            let content = '<h6>Event Codes</h6>';
+            eventCodes.forEach(event => {
+                content += `<div class="item"><span class="code">${event.code}:</span> ${event.name}</div>`;
+            });
+            
+            tooltip.innerHTML = content;
+            document.body.appendChild(tooltip);
+            
+            const rect = element.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+            
+            // Position tooltip to the right of the button
+            let top = rect.top + window.scrollY;
+            let left = rect.right + 10;
+            
+            // Adjust if tooltip goes off screen
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = rect.left - tooltipRect.width - 10;
+            }
+            if (top + tooltipRect.height > window.innerHeight + window.scrollY - 10) {
+                top = window.innerHeight + window.scrollY - tooltipRect.height - 10;
+            }
+            if (top < window.scrollY + 10) {
+                top = window.scrollY + 10;
+            }
+            
+            tooltip.style.top = top + 'px';
+            tooltip.style.left = left + 'px';
+            
+            currentHoverTooltip = tooltip;
+        }
+        
+        function hideHoverTooltip() {
+            if (currentHoverTooltip) {
+                currentHoverTooltip.remove();
+                currentHoverTooltip = null;
+            }
+        }
     </script>
 </body>
 </html>
