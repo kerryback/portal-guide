@@ -234,7 +234,7 @@
                 <!-- Rice University Header -->
                 <div class="header-section">
                     <div class="logo-container">
-                        <img src="https://raw.githubusercontent.com/kerrybackapps/data_app/main/static/images/mcnair.jpg" alt="McNair Center" class="mcnair-logo">
+                        <img src="mcnair.jpg" alt="McNair Center" class="mcnair-logo">
                         <h3>Table Descriptions</h3>
                         <img src="https://raw.githubusercontent.com/kerrybackapps/data_app/main/static/images/rice-business.jpg" alt="Rice Business" class="rice-logo">
                     </div>
@@ -259,7 +259,7 @@
                         <!-- Table List (Alphabetical Order) -->
                         <ul class="list-unstyled">
                             <li class="mb-3">
-                                <button class="btn table-name-btn me-2 hover-actions" onclick="showTableDescription('actions')" onmouseenter="showActionsTooltip(this)" onmouseleave="hideHoverTooltip()">Actions</button>
+                                <button class="btn table-name-btn me-2" onclick="showTableDescription('actions')">Actions</button>
                                 <span>Corporate actions including mergers, splits, dividends, and ticker changes</span>
                             </li>
                             <li class="mb-3">
@@ -267,7 +267,7 @@
                                 <span>Daily values of PE ratio, enterprise value to EBITDA, etc. </span>
                             </li>
                             <li class="mb-3">
-                                <button class="btn table-name-btn me-2 hover-events" onclick="showTableDescription('events')" onmouseenter="showEventsTooltip(this)" onmouseleave="hideHoverTooltip()">Events</button>
+                                <button class="btn table-name-btn me-2" onclick="showTableDescription('events')">Events</button>
                                 <span>SEC 8-K filings and material corporate events</span>
                             </li>
                             <li class="mb-3">
@@ -429,7 +429,7 @@
 
         // Actions table data from CSV (sorted alphabetically by variable)
         const actionsData = [
-            { variable: 'action', name: 'Action', description: 'The available actions in this field are outlined in the INDICATORS table where the table field equals ACTIONTYPES.' },
+            { variable: 'action', name: 'Action', description: 'The available actions in this field are outlined in the INDICATORS table where the table field equals ACTIONTYPES.', hasTooltip: 'actions' },
             { variable: 'contraname', name: 'Contra Issuer Name', description: 'The name of the contra issuer associated with the contra ticker.' },
             { variable: 'contraticker', name: 'Contra Ticker Symbol', description: 'The contra ticker associated with the action; if applicable.' },
             { variable: 'date', name: 'Date', description: 'The date of the corporate action.' },
@@ -441,7 +441,7 @@
         // Events table data from CSV (sorted alphabetically by variable)
         const eventsData = [
             { variable: 'date', name: 'Filing Date', description: 'The date of the form 8 SEC filing.' },
-            { variable: 'eventcodes', name: 'Material Corporate Events', description: 'Each type of event is assigned a 2-digit numeric code which are described in this INDICATORS table where the table field equals EVENTCODES.' },
+            { variable: 'eventcodes', name: 'Material Corporate Events', description: 'Each type of event is assigned a 2-digit numeric code which are described in this INDICATORS table where the table field equals EVENTCODES.', hasTooltip: 'events' },
             { variable: 'ticker', name: 'Ticker Symbol', description: 'The ticker is a unique identifier for a security in the database. Where a company is delisted and the ticker subsequently recycled for use by a different company; we utilise that ticker for the currently active company and append a number to the ticker of the delisted company. The ACTIONS table provides a record of historical ticker changes.' }
         ];
 
@@ -627,9 +627,12 @@
             `;
             
             data.forEach(row => {
+                const tooltipAttrs = row.hasTooltip ? 
+                    `onmouseenter="show${row.hasTooltip === 'actions' ? 'Actions' : 'Events'}Tooltip(this)" onmouseleave="hideHoverTooltip()"` : '';
+                
                 content += `
                     <tr>
-                        <td class="tooltip-trigger" data-description="${escapeHtml(row.description)}">
+                        <td class="tooltip-trigger" data-description="${escapeHtml(row.description)}" ${tooltipAttrs}>
                             <code>${row.variable}</code>
                         </td>
                         <td class="tooltip-trigger" data-description="${escapeHtml(row.description)}">
@@ -759,9 +762,12 @@
         // Event delegation for tooltips
         document.addEventListener('mouseover', function(e) {
             if (e.target.classList.contains('tooltip-trigger')) {
-                const description = e.target.getAttribute('data-description');
-                if (description) {
-                    showTooltip(e.target, description);
+                // Don't show regular tooltip if this element has a special tooltip
+                if (!e.target.hasAttribute('onmouseenter')) {
+                    const description = e.target.getAttribute('data-description');
+                    if (description) {
+                        showTooltip(e.target, description);
+                    }
                 }
             }
         });
