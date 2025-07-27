@@ -187,7 +187,7 @@
             z-index: 1500;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             opacity: 0;
-            pointer-events: none;
+            pointer-events: auto;
             transition: opacity 0.3s ease;
             white-space: pre-line;
         }
@@ -628,7 +628,7 @@
             
             data.forEach(row => {
                 const tooltipAttrs = row.hasTooltip ? 
-                    `onmouseenter="show${row.hasTooltip === 'actions' ? 'Actions' : 'Events'}Tooltip(this)" onmouseleave="hideHoverTooltip()"` : '';
+                    `onmouseenter="show${row.hasTooltip === 'actions' ? 'Actions' : 'Events'}Tooltip(this)" onmouseleave="handleTooltipMouseLeave(event, this)"` : '';
                 
                 content += `
                     <tr>
@@ -878,6 +878,17 @@
             tooltip.style.top = top + 'px';
             tooltip.style.left = left + 'px';
             
+            // Add mouse enter/leave handlers to the tooltip itself
+            tooltip.addEventListener('mouseenter', function() {
+                if (this.hideTimeout) {
+                    clearTimeout(this.hideTimeout);
+                }
+            });
+            
+            tooltip.addEventListener('mouseleave', function() {
+                hideHoverTooltip();
+            });
+            
             currentHoverTooltip = tooltip;
         }
         
@@ -916,6 +927,17 @@
             tooltip.style.top = top + 'px';
             tooltip.style.left = left + 'px';
             
+            // Add mouse enter/leave handlers to the tooltip itself
+            tooltip.addEventListener('mouseenter', function() {
+                if (this.hideTimeout) {
+                    clearTimeout(this.hideTimeout);
+                }
+            });
+            
+            tooltip.addEventListener('mouseleave', function() {
+                hideHoverTooltip();
+            });
+            
             currentHoverTooltip = tooltip;
         }
         
@@ -923,6 +945,19 @@
             if (currentHoverTooltip) {
                 currentHoverTooltip.remove();
                 currentHoverTooltip = null;
+            }
+        }
+        
+        // Handle mouse leave with delay to allow moving to tooltip
+        function handleTooltipMouseLeave(event, element) {
+            // Set a timeout to hide the tooltip
+            const hideTimeout = setTimeout(() => {
+                hideHoverTooltip();
+            }, 100);
+            
+            // Store the timeout ID on the tooltip so we can cancel it
+            if (currentHoverTooltip) {
+                currentHoverTooltip.hideTimeout = hideTimeout;
             }
         }
     </script>
